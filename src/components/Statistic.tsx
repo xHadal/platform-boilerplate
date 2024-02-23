@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import {
   AiFillDollarCircle,
   AiFillExperiment,
@@ -7,60 +7,73 @@ import {
   AiOutlineArrowUp,
 } from "react-icons/ai";
 import styled from "styled-components";
-function Statistic() {
+
+interface AnalyticData {
+  title: string;
+  icon: JSX.Element;
+  value: string;
+  percentage: number;
+  isIncrease: boolean;
+}
+
+interface SectionProps {
+  // data: AnalyticData[];
+}
+
+const Analytic: FC<{ data: AnalyticData }> = ({ data }) => {
+  return (
+    <div className={`analytic color${data.title}`}>
+      <div className="total">
+        <h6>{data.title}</h6>
+        <span className={`t${data.isIncrease ? 1 : 2}`}>
+          {data.isIncrease ? "+" : "-"}
+          {data.percentage}%
+        </span>
+        {data.isIncrease ? <AiOutlineArrowUp /> : <AiOutlineArrowDown />}
+      </div>
+      <div className="design">
+        <div className="logo">{data.icon}</div>
+        <div className="content">
+          <h5>{data.value}</h5>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Statistic: React.FC<SectionProps> = () => {
+  const data: AnalyticData[] = [
+    {
+      title: "TOTAL SALES",
+      icon: <AiFillTag />,
+      value: "$123,123,123",
+      percentage: 18,
+      isIncrease: true,
+    },
+    {
+      title: "TOTAL EXPENSES",
+      icon: <AiFillExperiment />,
+      value: "$123,123,123",
+      percentage: 8,
+      isIncrease: false,
+    },
+    {
+      title: "TOTAL REVENUE",
+      icon: <AiFillDollarCircle />,
+      value: "$123,123,123",
+      percentage: 8,
+      isIncrease: false,
+    },
+  ];
+
   return (
     <Section>
-      {/* TOTAL SALES */}
-      <div className="analytic color1">
-        <div className="design">
-          <div className="logo">
-            <AiFillTag />
-          </div>
-          <div className="content">
-            <h5>$123,123,123</h5>
-          </div>
-        </div>
-        <div className="total">
-          <h6>TOTAL SALES</h6>
-          <span className="t1">+18%</span>
-          <AiOutlineArrowUp />
-        </div>
-      </div>
-      {/* TOTAL EXPENSES */}
-      <div className="analytic color1">
-        <div className="design">
-          <div className="logo">
-            <AiFillExperiment />
-          </div>
-          <div className="content">
-            <h5>$123,123,123</h5>
-          </div>
-        </div>
-        <div className="total">
-          <h6>TOTAL EXPENSES</h6>
-          <span className="t2">-8%</span>
-          <AiOutlineArrowDown />
-        </div>
-      </div>
-      {/* TOTAL EXPENSES */}
-      <div className="analytic color1">
-        <div className="design">
-          <div className="logo">
-            <AiFillDollarCircle />
-          </div>
-          <div className="content">
-            <h5>$123,123,123</h5>
-          </div>
-        </div>
-        <div className="total">
-          <h6>TOTAL REVENUE</h6>
-          <span className="t2">-8%</span>
-          <AiOutlineArrowDown />
-        </div>
-      </div>
+      {data.map((item) => (
+        <Analytic key={item.title} data={item} />
+      ))}
     </Section>
   );
-}
+};
 
 export default Statistic;
 const Section = styled.section`
@@ -85,6 +98,7 @@ const Section = styled.section`
     gap: 1rem;
     transition: 0.5s ease-in-out;
     cursor: pointer;
+    background-color: #eef4ff;
     &:hover {
       background-color: #d4e0ff;
       color: black;
@@ -114,7 +128,7 @@ const Section = styled.section`
       align-items: center;
       gap: 1rem;
       justify-content: space-evenly;
-      margin-top: 20px;
+      margin-bottom: 20px;
       .svg1 {
         color: green;
       }
