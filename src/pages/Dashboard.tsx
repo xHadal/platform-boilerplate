@@ -1,16 +1,19 @@
-import React from "react";
 import styled from "styled-components";
-import NavBar from "./NavBar";
-import Statistic from "./Statistic";
-import Analytic from "./Analytic";
-import Orders from "./Orders";
-import Sales from "./Sales";
-import Add from "./Add";
-import Shopping from "./Shopping";
-function Dashboard() {
+import NavBar from "@components/NavBar";
+import Statistic from "@components/Statistic";
+import Analytic from "@components/Analytic";
+import Orders from "@components/Orders";
+import Sales from "@/components/Sales";
+import Add from "@components/ui/AddButton";
+import Shopping from "@components/Shopping";
+import React from "react";
+
+interface DashboardProps {}
+
+const Dashboard: React.FC<DashboardProps> = () => {
   return (
     <Section>
-      <NavBar />
+      <NavBar data={{ title: "Dashboard" }} />
       <div className="grid">
         <div className="grid_1">
           <Statistic />
@@ -20,16 +23,17 @@ function Dashboard() {
         <div className="grid_2">
           <Analytic />
           <Shopping />
-          <Add />
+          <Add text="add" />
         </div>
       </div>
     </Section>
   );
-}
+};
 
 export default Dashboard;
 
 const Section = styled.section`
+  background-color: ${(props) => props.theme.common.background};
   margin-left: 18vw;
   padding: 2rem;
   height: 100%;

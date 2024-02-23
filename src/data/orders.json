@@ -1,0 +1,39 @@
+{
+    "data": [
+        {
+            "date": "2023-11-14",
+            "price": 129.99,
+            "productName": "Producto 1",
+            "status": "Sent",
+            "trackingId": "#9876431"
+        },
+        {
+            "date": "2023-11-15",
+            "price": 249.99,
+            "productName": "Producto 2",
+            "status": "Delivered",
+            "trackingId": "#9876432"
+        },
+        {
+            "date": "2023-11-16",
+            "price": 399.99,
+            "productName": "Producto 3",
+            "status": "Pending",
+            "trackingId": "#9876433"
+        },
+        {
+            "date": "2023-11-17",
+            "price": 499.99,
+            "productName": "Producto 4",
+            "status": "On the way",
+            "trackingId": "#9876434"
+        },
+        {
+            "date": "2023-11-18",
+            "price": 599.99,
+            "productName": "Producto 5",
+            "status": "Delivered",
+            "trackingId": "#9876435"
+        }
+    ]
+}

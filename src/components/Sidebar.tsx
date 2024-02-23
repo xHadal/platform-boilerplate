@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { FC, useState } from "react";
 import styled from "styled-components";
+
 import {
   AiFillAppstore,
   AiFillShopping,
-  AiOutlineShoppingCart,
   AiOutlineLogout,
   AiOutlineMessage,
   AiOutlinePieChart,
@@ -11,32 +11,52 @@ import {
   AiOutlineUsergroupAdd,
   AiFillCodeSandboxCircle,
   AiOutlineAppstore,
-  AiOutlineUnlock,
 } from "react-icons/ai";
+import SwitchTheme from "@ui/SwitchTheme";
 
-import { SiAccusoft, SiCodesandbox } from "react-icons/si";
+interface SidebarProps {}
 
-function Sidebar() {
-  const [currentLink, setCurrentLink] = useState(1);
+interface Section {
+  title: string;
+  icon: JSX.Element;
+  active: number;
+}
 
-  const sections = [
-    {
-      title: "Dashboard",
-      icon: <AiOutlineAppstore />,
-      active: 0,
-    },
+const sections: Section[] = [
+  {
+    title: "Dashboard",
+    icon: <AiOutlineAppstore />,
+    active: 1,
+  },
+  {
+    title: "Cart",
+    icon: <AiFillShopping />,
+    active: 0,
+  },
+  {
+    title: "Reports",
+    icon: <AiOutlinePieChart />,
+    active: 0,
+  },
+  {
+    title: "Manage Users",
+    icon: <AiOutlineUsergroupAdd />,
+    active: 0,
+  },
+  {
+    title: "Settings",
+    icon: <AiOutlineSetting />,
+    active: 0,
+  },
+  {
+    title: "Contact",
+    icon: <AiOutlineMessage />,
+    active: 0,
+  },
+];
+const Sidebar: FC<SidebarProps> = () => {
+  const [currentLink, setCurrentLink] = useState<number>(0);
 
-    {
-      title: "Settings",
-      icon: <AiOutlineSetting />,
-      active: 0,
-    },
-    {
-      title: "Contact",
-      icon: <AiOutlineMessage />,
-      active: 0,
-    },
-  ];
   return (
     <Section>
       <div className="top">
@@ -44,6 +64,7 @@ function Sidebar() {
           <AiFillCodeSandboxCircle />
           <span>WELLCOME</span>
         </div>
+        <SwitchTheme></SwitchTheme>
         <div className="links">
           <ul>
             {sections.map((section, i) => {
@@ -77,14 +98,14 @@ function Sidebar() {
       </div>
     </Section>
   );
-}
+};
 
 export default Sidebar;
 
 const Section = styled.section`
   position: fixed;
   left: 0;
-  background-color: #e91d63;
+  background-color: ${(props) => props.theme.common.primary};
   height: 100%;
   width: 18vw;
   display: flex;
@@ -108,13 +129,13 @@ const Section = styled.section`
       align-items: center;
       gap: 1.3rem 0;
       svg {
-        color: #fff;
+        color: ${(props) => props.theme.common.white};
         font-size: 3rem;
       }
       span {
         font-size: 1.5rem;
         font-weight: bold;
-        color: #fff;
+        color: ${(props) => props.theme.common.white};
       }
     }
     .links {
@@ -131,13 +152,13 @@ const Section = styled.section`
           cursor: pointer;
           transition: 0.5s ease-in-out;
           &:hover {
-            background-color: #e97ea3;
+            background-color: ${(props) => props.theme.common.hover};
           }
           a {
             text-decoration: none;
             display: flex;
             gap: 1rem;
-            color: #fff;
+            color: ${(props) => props.theme.common.white};
             font-weight: bold;
           }
           svg {
@@ -148,9 +169,9 @@ const Section = styled.section`
             gap: 2rem;
           }
           &.active {
-            background-color: #fff;
+            background-color: ${(props) => props.theme.common.white};
             a {
-              color: #e91d63;
+              color: ${(props) => props.theme.common.primary};
               font-weight: bold;
               span {
                 display: flex;
@@ -169,7 +190,7 @@ const Section = styled.section`
     .map {
       width: 90%;
       display: flex;
-      background-color: #fff;
+      background-color: ${(props) => props.theme.common.white};
       padding: 10px;
       flex-direction: column;
       justify-content: center;
@@ -177,7 +198,7 @@ const Section = styled.section`
       gap: 1rem;
       text-align: center;
       border-radius: 0.5rem;
-      color: #e91d63;
+      color: ${(props) => props.theme.common.primary};
       font-weight: bold;
 
       svg {
@@ -195,7 +216,7 @@ const Section = styled.section`
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #fff;
+        color: ${(props) => props.theme.common.white};
         gap: 1rem;
 
         svg {
