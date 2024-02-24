@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, useContext } from "react";
 import styled from "styled-components";
 
 import {
@@ -12,8 +12,10 @@ import {
   AiFillCodeSandboxCircle,
   AiOutlineAppstore,
 } from "react-icons/ai";
-import SwitchTheme from "@ui/SwitchTheme";
-
+import SwitchCustom from "@/components/ui/Switch";
+import { ManageThemeContext } from "@context/Theme";
+import Brightness3TwoToneIcon from "@mui/icons-material/Brightness3TwoTone";
+import LightModeTwoToneIcon from "@mui/icons-material/LightModeTwoTone";
 interface SidebarProps {}
 
 interface Section {
@@ -56,7 +58,7 @@ const sections: Section[] = [
 ];
 const Sidebar: FC<SidebarProps> = () => {
   const [currentLink, setCurrentLink] = useState<number>(0);
-
+  const theme = useContext(ManageThemeContext);
   return (
     <Section>
       <div className="top">
@@ -64,7 +66,13 @@ const Sidebar: FC<SidebarProps> = () => {
           <AiFillCodeSandboxCircle />
           <span>WELLCOME</span>
         </div>
-        <SwitchTheme></SwitchTheme>
+        <SwitchCustom
+          size="small"
+          iconSize="small"
+          onClick={() => theme.toggle()}
+          leftIcon={LightModeTwoToneIcon}
+          rightIcon={Brightness3TwoToneIcon}
+        />
         <div className="links">
           <ul>
             {sections.map((section, i) => {
