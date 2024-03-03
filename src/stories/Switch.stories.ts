@@ -17,7 +17,17 @@ const meta = {
   argTypes: {
     label: {
       control: 'text',
-      description: 'Overwritten description',
+      description: 'label to show',
+    },
+    color: {
+      options: ['default','primary', 'secondary', 'warning'],
+      control: { type: 'radio' },
+      description: 'Color',
+    },
+    iconSize: {
+      options: ['small','medium', 'large'],
+      control: { type: 'radio' },
+      description: 'Icon size',
     },
   },
 } satisfies Meta<typeof Switch>;
@@ -29,6 +39,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     label: 'Switch theme',
+    color: 'default'
   },
 };
 
