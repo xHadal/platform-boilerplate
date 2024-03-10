@@ -7,14 +7,14 @@ import Sales from "@/components/Sales";
 import Add from "@components/ui/AddButton";
 import Shopping from "@components/Shopping";
 import React from "react";
+import { Section } from "@/components/presentational/Section";
 
 interface DashboardProps {}
 
 const Dashboard: React.FC<DashboardProps> = () => {
   return (
-    <Section>
-      <NavBar data={{ title: "Dashboard" }} />
-      <div className="grid">
+    <Section title="Dashboard">
+      <StyledGrid>
         <div className="grid_1">
           <Statistic />
           <Sales />
@@ -25,36 +25,30 @@ const Dashboard: React.FC<DashboardProps> = () => {
           <Shopping />
           <Add text="add" />
         </div>
-      </div>
+      </StyledGrid>
     </Section>
   );
 };
 
 export default Dashboard;
 
-const Section = styled.section`
-  background-color: ${(props) => props.theme.common.background};
-  margin-left: 18vw;
-  padding: 2rem;
-  height: 100%;
-  .grid {
-    display: grid;
-    grid-template-columns: 70% 28%;
-    gap: 2rem;
-    margin-top: 2rem;
-    .grid_1 {
-      z-index: 1;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .grid_2 {
-      z-index: 1;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+const StyledGrid = styled.div`
+  display: grid;
+  grid-template-columns: 70% 28%;
+  gap: 2rem;
+  margin-top: 2rem;
+  .grid_1 {
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .grid_2 {
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 `;
