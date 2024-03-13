@@ -7,6 +7,7 @@ import Sales from "@/components/Sales";
 import Add from "@components/ui/AddButton";
 import Shopping from "@components/Shopping";
 import React from "react";
+import { data as orders } from "@data/orders.json";
 
 interface DashboardProps {}
 
@@ -18,7 +19,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
         <div className="grid_1">
           <Statistic />
           <Sales />
-          <Orders />
+          <Orders data={orders} />
         </div>
         <div className="grid_2">
           <Analytic />
@@ -37,6 +38,8 @@ const Section = styled.section`
   margin-left: 18vw;
   padding: 2rem;
   height: 100%;
+  position: fixed;
+  overflow-y: scroll;
   .grid {
     display: grid;
     grid-template-columns: 70% 28%;

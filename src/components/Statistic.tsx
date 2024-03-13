@@ -81,7 +81,7 @@ const Section = styled.section`
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   .color1 {
-    background-color: #eef4ff;
+    background-color: ${(props) => props.theme.common.secondary};
   }
   .color2 {
     background-color: #fdf4f5;
@@ -92,13 +92,13 @@ const Section = styled.section`
   .analytic {
     padding: 1rem 2rem;
     border-radius: 1rem;
-    color: #333;
+    color: ${(props) => props.theme.palette.text.primary};
     justify-content: space-evenly;
     align-items: center;
     gap: 1rem;
     transition: 0.5s ease-in-out;
     cursor: pointer;
-    background-color: #eef4ff;
+    background-color: ${(props) => props.theme.common.secondary};
     &:hover {
       background-color: #d4e0ff;
       color: black;

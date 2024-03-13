@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import styled from "styled-components";
 import { AiFillCodeSandboxCircle } from "react-icons/ai";
-import { data } from "@data/orders.json";
+import Autocomplete from "@components/ui/AutoComplete";
 interface Order {
   trackingId: string;
   productName: string;
@@ -11,19 +11,30 @@ interface Order {
 }
 
 interface OrdersProps {
-  //orders: Order[];
+  data: Order[];
 }
 
-const Orders: FC<OrdersProps> = () => {
+const Orders: FC<OrdersProps> = ({ data }) => {
   const [orders, setOrders] = useState<Order[]>([]);
+  const ordersName = orders.map((order) => order.productName);
   useEffect(() => {
     setOrders(data);
   }, []);
+
+  const onFilter = (value: string) => {
+    const filteredOrders = data.filter((order) =>
+      order.productName.toLowerCase().includes(value.toLowerCase())
+    );
+    setOrders(filteredOrders);
+  };
   return (
     <StyledOrdersSection>
       <StyledOrdersDetail>
         <div>
-          <h4>Recent Order</h4>
+          <h2>Recent Orders</h2>
+        </div>
+        <div>
+          <Autocomplete data={ordersName} onFilter={onFilter}></Autocomplete>
         </div>
         <div>
           <button>SEE ALL</button>
@@ -66,7 +77,7 @@ const Orders: FC<OrdersProps> = () => {
 export default Orders;
 
 const StyledOrdersSection = styled.section`
-  color: black;
+  color: ${(props) => props.theme.palette.text.primary};
   width: 100%;
   .orders__table {
     display: flex;
@@ -76,16 +87,16 @@ const StyledOrdersSection = styled.section`
       border-collapse: collapse;
       width: 100%;
       tr {
-        background-color: #eef4ff;
-        border-bottom: 5px solid white;
+        background-color: ${(props) => props.theme.common.secondary};
+        border-bottom: 5px solid ${(props) => props.theme.common.background};
         border-radius: 15px;
         transition: 0.2s ease-in-out;
         &:hover {
-          background-color: #d4e0ff;
+          background-color: ${(props) => props.theme.common.secondaryHover};
         }
       }
       th {
-        background-color: white;
+        background-color: ${(props) => props.theme.common.secondary};
       }
       th,
       td {
@@ -122,14 +133,5 @@ const StyledOrdersDetail = styled.div`
   margin: 1rem 0;
   div {
     display: flex;
-    gap: 1rem;
-    button {
-      padding: 0.4rem 1rem;
-      border: none;
-      cursor: pointer;
-      background-color: white;
-      color: #668dff;
-      font-weight: bold;
-    }
   }
 `;

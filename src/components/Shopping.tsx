@@ -83,7 +83,7 @@ const StyledOrder = styled.div`
   padding: 0.5rem;
   border-radius: 1rem;
   color: #333;
-  background-color: #eef4ff;
+  background-color: ${(props) => props.theme.common.secondary};
   justify-content: space-evenly;
   align-items: center;
   gap: 0.5rem;
@@ -98,6 +98,7 @@ const StyledOrder = styled.div`
   .design {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     .img1 {
       background-color: #668dff;
@@ -155,7 +156,7 @@ const Section = styled.section`
     padding: 0.5rem;
     border-radius: 1rem;
     color: #333;
-    background-color: #eef4ff;
+    background-color: ${(props) => props.theme.common.secondary};
     justify-content: space-evenly;
     align-items: center;
     gap: 0.5rem;

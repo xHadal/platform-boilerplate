@@ -26,7 +26,6 @@ export const ThemeContextProvider = ({ children }: IThemeContextProvider) => {
     setThemeState({
       mode: themeState.mode === lightTheme ? darkTheme : lightTheme,
     });
-    console.log(themeState.mode);
   };
   return (
     <ManageThemeContext.Provider
