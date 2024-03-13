@@ -17,6 +17,11 @@ const StyledAddButton = styled.a`
   font-weight: bold;
   text-decoration: none;
   text-transform: uppercase;
-  color: ${(props) => props.theme.common.white};
-  background: ${(props) => props.theme.common.black};
+  color: ${(props) => props.theme.palette.text.primary};
+  background: ${(props) => props.theme.common.secondary};
+  border-radius: 5px;
+  border: 1px solid ${(props) => props.theme.common.secondaryHover};
+  &:hover {
+    background: ${(props) => props.theme.common.secondaryHover};
+  }
 `;

@@ -4,7 +4,7 @@ import Switch, { SwitchProps } from "@mui/material/Switch";
 import styled from "styled-components";
 
 interface SwitchThemeProps extends SwitchProps {
-  iconSize?: string;
+  iconsize?: string;
   label?: string;
   leftIcon?: React.ElementType;
   rightIcon?: React.ElementType;
@@ -12,14 +12,14 @@ interface SwitchThemeProps extends SwitchProps {
 }
 
 const SwitchCustom: FC<SwitchThemeProps> = (props: SwitchThemeProps) => {
-  const { label, iconSize, onClick, leftIcon, rightIcon, ...switchProps } =
+  const { label, iconsize, onClick, leftIcon, rightIcon, ...switchProps } =
     props;
   return (
     <StyledSwitch>
       {label && label}
-      {leftIcon && createElement(leftIcon, { iconSize })}
+      {leftIcon && createElement(leftIcon, { iconsize })}
       <Switch onClick={() => onClick()} {...switchProps}></Switch>
-      {rightIcon && createElement(rightIcon, { iconSize })}
+      {rightIcon && createElement(rightIcon, { iconsize })}
     </StyledSwitch>
   );
 };

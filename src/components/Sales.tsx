@@ -10,7 +10,6 @@ import {
   CartesianGrid,
   Legend,
 } from "recharts";
-import { AiOutlineCaretDown } from "react-icons/ai";
 import { data } from "@data/sales.json";
 
 const Sales: FC = () => {
@@ -22,10 +21,14 @@ const Sales: FC = () => {
             <h4>Sales Overview</h4>
           </div>
           <div>
-            <button>
-              Monthly
-              <AiOutlineCaretDown />
-            </button>
+            {/*  TODO: filter by time */}
+            <select name="time">
+              <option value="weekly">Weekly</option>
+              <option value="monthly">Monthly</option>
+              <option value="yearly" selected>
+                Yearly
+              </option>
+            </select>
           </div>
         </div>
         <div className="sales__graph">
@@ -75,7 +78,7 @@ export default Sales;
 
 const Section = styled.section`
   .sales {
-    color: black;
+    color: ${(props) => props.theme.palette.text.primary};
     width: 100%;
     .sales__details {
       display: flex;
@@ -89,7 +92,7 @@ const Section = styled.section`
           padding: 0.4rem 1rem;
           border: none;
           cursor: pointer;
-          background-color: #eef4ff;
+          background-color: ${(props) => props.theme.common.secondary};
           color: black;
           svg {
             font-size: 0.6rem;
