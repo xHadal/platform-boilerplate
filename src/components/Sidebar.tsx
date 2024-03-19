@@ -68,7 +68,7 @@ const Sidebar: FC<SidebarProps> = () => {
         </div>
         <SwitchCustom
           size="small"
-          iconSize="small"
+          iconsize="small"
           onClick={() => theme.toggle()}
           leftIcon={LightModeTwoToneIcon}
           rightIcon={Brightness3TwoToneIcon}

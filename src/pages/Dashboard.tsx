@@ -8,6 +8,7 @@ import Add from "@components/ui/AddButton";
 import Shopping from "@components/Shopping";
 import React from "react";
 import { Section } from "@/components/presentational/Section";
+import { data as orders } from "@data/orders.json";
 
 interface DashboardProps {}
 
@@ -18,7 +19,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
         <div className="grid_1">
           <Statistic />
           <Sales />
-          <Orders />
+          <Orders data={orders} />
         </div>
         <div className="grid_2">
           <Analytic />

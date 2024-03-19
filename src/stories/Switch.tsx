@@ -4,7 +4,7 @@ export interface SwitchCustomProps extends SwitchProps {
   /**
    * Icon size {string}
    */
-  iconSize?: string;
+  iconsize?: string;
   /**
    * Label to show on top {string}
    */
@@ -27,12 +27,9 @@ export interface SwitchCustomProps extends SwitchProps {
  * Primary UI component for user interaction
  */
 export const Switch = ({
-  iconSize,
-  onClick,
-  leftIcon,
+  iconsize,
   label,
   disabled,
-  rightIcon,
   color,
   size,
   ...props
@@ -43,7 +40,7 @@ export const Switch = ({
       label={label}
       disabled={disabled}
       color={color}
-      iconSize={iconSize}
+      iconsize={iconsize}
       onClick={() => {}}
       {...props}
     />

@@ -57,7 +57,7 @@ const Analytic: FC<AnalyticProps> = () => {
 export default Analytic;
 const Section = styled.section`
   .analytics {
-    color: black;
+    color: ${(props) => props.theme.palette.text.primary};
     width: 100%;
     .analytics__details {
       display: flex;

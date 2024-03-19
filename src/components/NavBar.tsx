@@ -54,10 +54,10 @@ const StyledNotification = styled.div`
     padding: 1rem;
     border-radius: 1rem;
     svg {
-      color: #333;
+      color: ${(props) => props.theme.palette.text.primary};
     }
     span {
-      color: #333;
+      color: ${(props) => props.theme.palette.text.primary};
     }
   }
   .icon {
@@ -66,10 +66,10 @@ const StyledNotification = styled.div`
     gap: 1rem;
     padding: 1rem;
     svg {
-      color: #333;
+      color: ${(props) => props.theme.palette.text.primary};
     }
     span {
-      color: #333;
+      color: ${(props) => props.theme.palette.text.primary};
     }
     .image {
       height: 2.5rem;
@@ -85,7 +85,7 @@ const Nav = styled.nav`
   .title {
     h1 {
       margin-left: 0.5rem;
-      color: #333;
+      color: ${(props) => props.theme.palette.text.primary};
       font-weight: bold;
       font-size: 2rem;
     }

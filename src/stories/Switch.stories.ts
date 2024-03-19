@@ -24,7 +24,7 @@ const meta = {
       control: { type: 'radio' },
       description: 'Color',
     },
-    iconSize: {
+    iconsize: {
       options: ['small','medium', 'large'],
       control: { type: 'radio' },
       description: 'Icon size',
